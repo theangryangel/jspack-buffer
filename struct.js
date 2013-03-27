@@ -145,11 +145,11 @@ var magic = {
 		length: 4,
 		pack: function(dv, value, offset, c, littleendian)
 		{
-			common.pack('writeUInt32' + (littleendian ? 'LE' : 'BE'), dv, value, offset, c);
+			common.pack('writeInt32' + (littleendian ? 'LE' : 'BE'), dv, value, offset, c);
 		},
 		unpack: function(dv, offset, c, littleendian)
 		{
-			return common.unpack('readUInt32' + (littleendian ? 'LE' : 'BE'), dv, offset, c);
+			return common.unpack('readInt32' + (littleendian ? 'LE' : 'BE'), dv, offset, c);
 		}
 	},
 	// unsigned long
@@ -196,11 +196,11 @@ var magic = {
 		length: 4,
 		pack: function(dv, value, offset, c, littleendian)
 		{
-			common.pack('writeFloat32' + (littleendian ? 'LE' : 'BE'), dv, value, offset, c);
+			common.pack('writeFloat' + (littleendian ? 'LE' : 'BE'), dv, value, offset, c);
 		},
 		unpack: function(dv, offset, c, littleendian)
 		{
-			return common.unpack('readFloat32' + (littleendian ? 'LE' : 'BE'), dv, offset, c);
+			return common.unpack('readFloat' + (littleendian ? 'LE' : 'BE'), dv, offset, c);
 		}
 	},
 	// double
