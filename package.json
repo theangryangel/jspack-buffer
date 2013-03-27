@@ -1,0 +1,15 @@
+{
+	"name": "jspack-buffer",
+	"author": "the_angry_angel <karl@theangryangel.co.uk>",
+	"version": "0.0.1",
+	"description": "A reimplementation of jspack (http://code.google.com/p/jspack) which uses nodejs' buffers, whilst maintaining a (mostly) compatible API.",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/theangryangel/jspack-buffer.git"
+	},
+	"bugs": "https://github.com/theangryangel/jspack-buffer/issues",
+	"main": "./struct",
+	"engine": [
+		"node>=0.8.0"
+	]
+}
