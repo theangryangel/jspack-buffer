@@ -1,5 +1,3 @@
-var Buffer = require('buffer');
-
 // utility pack and unpack functions to simplify magic
 var common = {
 	pack: function(method, dv, value, offset, c)
@@ -40,7 +38,7 @@ var magic = {
 		pack: function(dv, value, offset, c, littleendian)
 		{
 			for (var i = 0; i < c; i++)
-				dv.writeUint8(0, offset + i);
+				dv.writeUInt8(0, offset + i);
 		},
 		unpack: function(dv, offset, c, littleendian)
 		{
@@ -60,13 +58,13 @@ var magic = {
 				value = [ value ];
 	
 			for (var i = 0; i < c; i++)
-				dv.writeUint8(value[i].charCodeAt(0), offset + i);
+				dv.writeUInt8(value[i].charCodeAt(0), offset + i);
 		},
 		unpack: function(method, dv, offset, c, littleendian)
 		{
 			var r = [];
 			for (var i = 0; i < c; i++)
-				r.push(String.fromCharCode(dv.readUint8(offset + i)));
+				r.push(String.fromCharCode(dv.readUInt8(offset + i)));
 	
 			return r;
 		}
@@ -88,11 +86,11 @@ var magic = {
 		length: 1,
 		pack: function(dv, value, offset, c, littleendian)
 		{
-			common.pack('writeUint8', dv, value, offset, c);
+			common.pack('writeUInt8', dv, value, offset, c);
 		},
 		unpack: function(dv, offset, c, littleendian)
 		{
-			return common.unpack('readUint8', dv, offset, c);
+			return common.unpack('readUInt8', dv, offset, c);
 		}
 	},
 	// signed short
@@ -100,11 +98,11 @@ var magic = {
 		length: 2,
 		pack: function(dv, value, offset, c, littleendian)
 		{
-			common.pack('writeInt16' + (littlendian ? 'LE' : 'BE'), dv, value, offset, c);
+			common.pack('writeInt16' + (littleendian ? 'LE' : 'BE'), dv, value, offset, c);
 		},
 		unpack: function(dv, offset, c, littleendian)
 		{
-			return common.unpack('readInt16' + (littlendian ? 'LE' : 'BE'), dv, offset, c);
+			return common.unpack('readInt16' + (littleendian ? 'LE' : 'BE'), dv, offset, c);
 		}
 	},
 	// unsigned short
@@ -112,11 +110,11 @@ var magic = {
 		length: 2,
 		pack: function(dv, value, offset, c, littleendian)
 		{
-			common.pack('writeUint16' + (littlendian ? 'LE' : 'BE'), dv, value, offset, c);
+			common.pack('writeUInt16' + (littleendian ? 'LE' : 'BE'), dv, value, offset, c);
 		},
 		unpack: function(dv, offset, c, littleendian)
 		{
-			return common.unpack('readUint16' + (littlendian ? 'LE' : 'BE'), dv, offset, c);
+			return common.unpack('readUInt16' + (littleendian ? 'LE' : 'BE'), dv, offset, c);
 		}
 	},
 	// signed long 
@@ -124,11 +122,11 @@ var magic = {
 		length: 4,
 		pack: function(dv, value, offset, c, littleendian)
 		{
-			common.pack('writeInt32' + (littlendian ? 'LE' : 'BE'), dv, value, offset, c);
+			common.pack('writeInt32' + (littleendian ? 'LE' : 'BE'), dv, value, offset, c);
 		},
 		unpack: function(dv, offset, c, littleendian)
 		{
-			return common.unpack('readInt32' + (littlendian ? 'LE' : 'BE'), dv, offset, c);
+			return common.unpack('readInt32' + (littleendian ? 'LE' : 'BE'), dv, offset, c);
 		}
 	},
 	// unsigned long
@@ -136,22 +134,22 @@ var magic = {
 		length: 4,
 		pack: function(dv, value, offset, c, littleendian)
 		{
-			common.pack('writeUint32' + (littlendian ? 'LE' : 'BE'), dv, value, offset, c);
+			common.pack('writeUInt32' + (littleendian ? 'LE' : 'BE'), dv, value, offset, c);
 		},
 		unpack: function(dv, offset, c, littleendian)
 		{
-			return common.unpack('readUint32' + (littlendian ? 'LE' : 'BE'), dv, offset, c);
+			return common.unpack('readUInt32' + (littleendian ? 'LE' : 'BE'), dv, offset, c);
 		}
 	},
 	l : {
 		length: 4,
 		pack: function(dv, value, offset, c, littleendian)
 		{
-			common.pack('writeUint32' + (littlendian ? 'LE' : 'BE'), dv, value, offset, c);
+			common.pack('writeUInt32' + (littleendian ? 'LE' : 'BE'), dv, value, offset, c);
 		},
 		unpack: function(dv, offset, c, littleendian)
 		{
-			return common.unpack('readUint32' + (littlendian ? 'LE' : 'BE'), dv, offset, c);
+			return common.unpack('readUInt32' + (littleendian ? 'LE' : 'BE'), dv, offset, c);
 		}
 	},
 	// unsigned long
@@ -159,11 +157,11 @@ var magic = {
 		length: 4,
 		pack: function(dv, value, offset, c, littleendian)
 		{
-			common.pack('writeUint32' + (littlendian ? 'LE' : 'BE'), dv, value, offset, c);
+			common.pack('writeUInt32' + (littleendian ? 'LE' : 'BE'), dv, value, offset, c);
 		},
 		unpack: function(dv, offset, c, littleendian)
 		{
-			return common.unpack('readUint32' + (littlendian ? 'LE' : 'BE'), dv, offset, c);
+			return common.unpack('readUInt32' + (littleendian ? 'LE' : 'BE'), dv, offset, c);
 		}
 	},
 	// char[]
@@ -180,7 +178,7 @@ var magic = {
 				if (i < val.length)
 					code = val.charCodeAt(i);
 
-				dv.writeUint8(code, offset + i);
+				dv.writeUInt8(code, offset + i);
 			}
 			
 		},
@@ -188,7 +186,7 @@ var magic = {
 		{
 			var r = [];
 			for (var i = 0; i < c; i++)
-				r.push(String.fromCharCode(dv.readUint8(offset + i)));
+				r.push(String.fromCharCode(dv.readUInt8(offset + i)));
 
 			return [ r.join('') ];
 		}
@@ -256,7 +254,7 @@ var pack = function(fmt, values, offset)
 
 		var value = values.slice(i, i + 1);
 
-		magic[m[2]].pack(ab, value, offset, c, littlendian);
+		magic[m[2]].pack(ab, value, offset, c, littleendian);
 
 		offset += c * l;
 		i += 1;
