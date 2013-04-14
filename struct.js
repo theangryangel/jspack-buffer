@@ -52,7 +52,7 @@ var magic = {
 	// char
 	c : {
 		length: 1,
-		pack: function(method, dv, value, offset, c, littleendian)
+		pack: function(dv, value, offset, c, littleendian)
 		{
 			if (!Array.isArray(value))
 				value = [ value ];
@@ -60,7 +60,7 @@ var magic = {
 			for (var i = 0; i < c; i++)
 				dv.writeUInt8(value[i].charCodeAt(0), offset + i);
 		},
-		unpack: function(method, dv, offset, c, littleendian)
+		unpack: function(dv, offset, c, littleendian)
 		{
 			var r = [];
 			for (var i = 0; i < c; i++)
